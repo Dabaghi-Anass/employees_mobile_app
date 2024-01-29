@@ -1,6 +1,5 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import dataFromServer from "../api/data.json";
-const dataFiltred = dataFromServer;
 export function useFetch(endpoint, options = null) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -8,18 +7,18 @@ export function useFetch(endpoint, options = null) {
 
     const handleFetch = async () => {
         setIsLoading(true);
+        setError(null);
         try {
-            const response = await fetch(endpoint, options);
-            const json = await response.json();
-            setData(json);
+            const response = await axios.request(endpoint, options);
+            setData(response.data);
         } catch (error) {
-            setError(error);
+            setError(error.message);
         } finally {
             setIsLoading(false);
         }
     }
     useEffect(() => {
         handleFetch();
-    }, []);
-    return {data : dataFiltred, error, isLoading};
+    }, [endpoint]);
+    return {data, error, isLoading};
 }

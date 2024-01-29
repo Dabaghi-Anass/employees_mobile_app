@@ -8,7 +8,7 @@ const Badge = ({isActive , text,uniqueKey , onPress}) => {
         <TouchableOpacity onPress={() => onPress(uniqueKey)}>
             <Text style={{
                 ...globalStyles.badge ,
-                backgroundColor : isActive ? colors.BG_400 : colors.BG_300
+                backgroundColor : isActive ? colors.GREEN_DARK : colors.BG_300
                 }}>{text}</Text>
         </TouchableOpacity>
     )

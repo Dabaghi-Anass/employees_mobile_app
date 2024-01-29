@@ -65,6 +65,21 @@ const globalStyles = StyleSheet.create({
         width: 100,
         height: 100,
         resizeMode: 'cover',
+    },
+    errorWrapper:{
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'center',
+        backgroundColor: colors.RED,
+        padding : 10,
+        marginHorizontal : 30,
+        marginTop : 30,
+        gap : 20,
+    },
+    error: {
+        fontWeight : 'bold',
+        fontSize : 30,
+        textAlign : 'center',
     }
 
 });

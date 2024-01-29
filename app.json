@@ -2,7 +2,7 @@
   "expo": {
     "name": "employees_phone_app",
     "slug": "employees_phone_app",
-    "scheme": "employees_phone_app",
+    "scheme": "employees",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

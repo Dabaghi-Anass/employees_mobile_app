@@ -1,11 +1,16 @@
-import React from 'react'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
-import globalStyles from '../constants/globals'
-import styles from '../constants/styles'
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import globalStyles from '../constants/globals';
+import styles from '../constants/styles';
 
-export const EmployeeCard = ({employee ,onPress,style}) => {
+export const EmployeeCard = ({employee,style}) => {
+    const router = useRouter();
+    const handleOpenEmployeeProfile = () => {
+        router.push(`/employee/${employee.id}`)
+    }
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => handleOpenEmployeeProfile(employee.id)}>
             <View style={{...styles.employeeCard, ...style}}>
             <View style={styles.employeeCardImage}>
                 <Image

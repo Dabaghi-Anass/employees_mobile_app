@@ -15,7 +15,11 @@ const options = {
         ...style
     },
     searchScreen: {
-        title: "search",
+        title: "Search",
+        ...style
+    },
+    employeeScreen: {
+        title: "Profile",
         ...style
     }
 };
@@ -24,6 +28,7 @@ export default function App() {
         <Stack>
             <Stack.Screen name="index" options={options.homeScreen}/>
             <Stack.Screen name="search/[searchQuery]" options={options.searchScreen}/>
+            <Stack.Screen name="employee/[id]" options={options.employeeScreen}/>
         </Stack>
     );
 }
