@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import { Provider as StoreProvider } from "react-redux";
 
 import Cities from "../components/Cities";
@@ -11,14 +11,12 @@ import store from "../context/redux/store";
 export default function App() {
     return (
         <StoreProvider store={store}>
-            <View style={globalStyles.container}>
+            <View style={{...globalStyles.container , ...globalStyles.scrollContainer}}>
             <Search />
             <Cities />
-            <ScrollView>
-                <NearbyEmployees />
-                <RecommandedEmployees />
-            </ScrollView>
-        </View>
+            <NearbyEmployees />
+            <RecommandedEmployees />
+            </View>
         </StoreProvider>
     );
 }

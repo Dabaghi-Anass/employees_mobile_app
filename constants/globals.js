@@ -51,11 +51,13 @@ const globalStyles = StyleSheet.create({
         backgroundColor: colors.BG_300,
         padding : 10,
         fontSize : 20,
+        textTransform : 'capitalize',
         borderRadius : 10,
     },
     header:{
         color: colors.TEXT_200,
         padding : 15,
+        textTransform : 'capitalize',
         fontSize : 30,
         fontWeight : 'bold',
         textAlign : 'left',
@@ -75,6 +77,14 @@ const globalStyles = StyleSheet.create({
         marginHorizontal : 30,
         marginTop : 30,
         gap : 20,
+    },
+    scrollContainer : {
+        flex : 1,
+        width : deviceWidth,
+        alignItems : 'center',
+        justifyContent : 'flex-start',
+        backgroundColor : colors.APP_BG,
+        padding : 20,
     },
     error: {
         fontWeight : 'bold',

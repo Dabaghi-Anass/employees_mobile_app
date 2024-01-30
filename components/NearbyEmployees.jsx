@@ -13,7 +13,7 @@ const NearbyEmployees = () => {
     const {data : employees , isLoading,error} = useFetch(getEmployeesByCityEndpoint(selectedCity?.name))
     return (
         <View style={{maxHeight : 250 }}>
-            <Text style={globalStyles.header}>{selectedCity?.name ?? "Nearby"} Employees</Text>
+            <Text style={globalStyles.header}>{selectedCity?.name?? "Nearby"} Employees</Text>
             {error && <Error message={error} />}
             {isLoading ? <ActivityIndicator size={60} color={colors.GREEN_LIGHT} /> : 
             <FlatList
