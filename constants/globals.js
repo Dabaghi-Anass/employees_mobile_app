@@ -91,6 +91,11 @@ const globalStyles = StyleSheet.create({
         fontSize : 30,
         textAlign : 'center',
     }
+    ,
+    text : {
+        color : colors.TEXT_100,
+        fontSize : 20,
+    }
 
 });
 

@@ -1,4 +1,4 @@
-export const API_DOMAIN = "http://192.168.1.111:3000/api/employees";
+export const API_DOMAIN = "https://employees-api-92f4.onrender.com/api/employees";
 export const getEmployeesEndpoint = (offset , limit) =>`${API_DOMAIN}?offset=${offset}&limit=${limit}`;
 export const getCitiesEndpoint = () =>  API_DOMAIN + "/cities";
 export const getEmployeesByCityEndpoint = (city) => `${API_DOMAIN}?city=${city}`;

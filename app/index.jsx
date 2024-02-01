@@ -12,10 +12,10 @@ export default function App() {
     return (
         <StoreProvider store={store}>
             <View style={{...globalStyles.container , ...globalStyles.scrollContainer}}>
-            <Search />
-            <Cities />
-            <NearbyEmployees />
-            <RecommandedEmployees />
+                <Search />
+                <Cities />
+                <NearbyEmployees />
+                <RecommandedEmployees />
             </View>
         </StoreProvider>
     );

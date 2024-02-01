@@ -50,6 +50,61 @@ const styles = StyleSheet.create({
         fontSize : 18,
         marginBottom : 5,
         color : colors.TEXT_200
+    },
+    employeeName : {
+        fontSize : 30,
+        marginBottom : 5,
+        fontWeight : 'bold'
+    },
+    employeeAge : {
+        fontSize : 20,
+        marginBottom : 5,
+        fontWeight : 'bold',
+        color : colors.TEXT_200
+    },
+    employeeEmail : {
+        fontSize : 20,
+        marginBottom : 5,
+        fontWeight : 'bold',
+        color : colors.TEXT_200
+    },
+    employeeNumber: {
+        fontSize : 20,
+        marginBottom : 5,
+        fontWeight : 'bold',
+        color : colors.TEXT_200,
+    },
+    fieldWithIcon : {
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'center',
+        gap : 10,
+    },
+    employeeImage: {
+        borderRadius : 150,
+        width : 150,
+        height : 150,
+        resizeMode : 'cover',
+        padding : 10,
+        marginBottom : 40
+    },
+    employeeCardContent:{
+        alignItems : 'center',
+        gap : 10,
+        flex : 1,
+        padding : 20,
+        marginBottom : 20,
+    },
+    employeeBio : {
+        fontSize : 20,
+        marginBottom : 5,
+        padding : 20,
+        textAlign : 'center',
+        color : colors.TEXT_200
+    },
+    editButton : {
+        position : 'absolute',
+        bottom : 40,
     }
 });
 

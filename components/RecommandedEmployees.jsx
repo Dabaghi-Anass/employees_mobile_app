@@ -34,7 +34,7 @@ const RecommandedEmployees = () => {
                 if(distanceFromEnd < 0) return;
                 if(data?.hasNext) setPage((prevPage) => prevPage + 1)
             }}
-            contentContainerStyle={{ padding: 10 , gap : 20 }}
+            contentContainerStyle={{ paddingVertical: 0 , gap : 10 }}
     />
     )
 }

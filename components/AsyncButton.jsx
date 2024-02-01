@@ -1,7 +1,7 @@
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
-const AsyncButton = ({ onPress, text,icon , options }) => {
+const AsyncButton = ({ onPress, text,icon,styles , options }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [iconS, setIcon] = useState(icon);
     const [isFinished, setIsFinished] = useState(false);
@@ -57,6 +57,7 @@ const AsyncButton = ({ onPress, text,icon , options }) => {
             text={displayedText}
             onPress={handlePress}
             disabled={isLoading}
+            styles={styles}
             icon={iconS}
         />
     );
