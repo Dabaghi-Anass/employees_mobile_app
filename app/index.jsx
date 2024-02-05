@@ -11,7 +11,7 @@ import store from "../context/redux/store";
 export default function App() {
     return (
         <StoreProvider store={store}>
-            <View style={{...globalStyles.container , ...globalStyles.scrollContainer}}>
+            <View style={{...globalStyles.container}}>
                 <Search />
                 <Cities />
                 <NearbyEmployees />

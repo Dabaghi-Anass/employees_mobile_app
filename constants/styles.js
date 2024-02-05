@@ -78,8 +78,10 @@ const styles = StyleSheet.create({
         flexDirection : 'row',
         alignItems : 'center',
         justifyContent : 'center',
-        gap : 10,
+        gap : 20,
+        width : deviceWidth
     },
+    
     employeeImage: {
         borderRadius : 150,
         width : 150,
@@ -105,6 +107,8 @@ const styles = StyleSheet.create({
     editButton : {
         position : 'absolute',
         bottom : 40,
+    },
+    saveButton : {
     }
 });
 

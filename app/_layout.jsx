@@ -21,6 +21,9 @@ const options = {
     employeeScreen: {
         title: "Profile",
         ...style
+    },
+    employeeSaveScreen: {
+        headerShown : false
     }
 };
 export default function App() {
@@ -29,6 +32,7 @@ export default function App() {
             <Stack.Screen name="index" options={options.homeScreen}/>
             <Stack.Screen name="search/[searchQuery]" options={options.searchScreen}/>
             <Stack.Screen name="employee/[id]" options={options.employeeScreen}/>
+            <Stack.Screen name="employee/save" options={options.employeeSaveScreen}/>
         </Stack>
     );
 }

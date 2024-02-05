@@ -1,21 +1,21 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { getEmployeeByIdEndpoint } from '../../api/endpoints';
+import AppButton from '../../components/Button';
 import Error from '../../components/Error';
 import Screen from '../../components/Screen';
 import colors from '../../constants/colors';
 import { useFetch } from '../../hooks/useFetch';
-import AsyncButton from './../../components/AsyncButton';
 import globalStyles from './../../constants/globals';
 import styles from './../../constants/styles';
-
 const EmployeePage = () => {
     const params = useLocalSearchParams()
+    const router = useRouter()
     const {data : employee , isLoading , error} = useFetch(getEmployeeByIdEndpoint(params.id))
 
-    if(!employee) return null
+    if(!employee || isLoading) return <Screen styles={{alignItems : 'center',justifyContent : 'center'}}><ActivityIndicator size={60} color={colors.GREEN_LIGHT} /></Screen>
     return (
         <Screen>
             {error && <Error message={error} />}
@@ -38,12 +38,12 @@ const EmployeePage = () => {
             <ScrollView>
             <Text style={{...globalStyles.text,...styles.employeeBio}}>{employee.bio || `Hello, and welcome to my portfolio! I am a passionate in software development specifically web development. With up to 3 years of experience in web conception`}</Text>
             </ScrollView>
-            <AsyncButton styles={{
+
+            <AppButton styles={{
                 button : styles.editButton,
-            }} text="Save Profile"  onPress={() => console.log("pressed")} />
+            }} text="Edit Profile"  onPress={() => router.push(`employee/save/${params.id}`)} />
             </View>
         </Screen>
     )
 }
-
 export default EmployeePage
