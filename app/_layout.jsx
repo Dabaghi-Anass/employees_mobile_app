@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import React from "react";
+import CreateEmployeeButton from "../components/createEmployeeButton";
 import colors from "../constants/colors";
 let style = { 
     headerTitleAlign: "center",
@@ -12,6 +13,7 @@ let style = {
 const options = {
     homeScreen: {
         title: "Home",
+        headerLeft : () => <CreateEmployeeButton />,
         ...style
     },
     searchScreen: {

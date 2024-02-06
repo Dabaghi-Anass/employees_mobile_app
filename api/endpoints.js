@@ -4,3 +4,6 @@ export const getCitiesEndpoint = () =>  API_DOMAIN + "/cities";
 export const getEmployeesByCityEndpoint = (city) => `${API_DOMAIN}?city=${city}`;
 export const getEmployeeByNameEndpoint = (name) => `${API_DOMAIN}?name=${name}`;
 export const getEmployeeByIdEndpoint = (id) => `${API_DOMAIN}/${id}`;
+export const putEmployeeByIdEndpoint = (id) => `${API_DOMAIN}/${id}`;
+export const createEmployeeEndpoint = () => `${API_DOMAIN}`;
+export const deleteEmployeeByIdEndPoint = (id) => `${API_DOMAIN}/${id}`;

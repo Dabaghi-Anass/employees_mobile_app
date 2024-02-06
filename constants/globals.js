@@ -11,6 +11,7 @@ const globalStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
+        alignItems : 'center',
         gap: 10
     },
     buttonIconContainer: {

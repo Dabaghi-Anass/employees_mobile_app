@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-export function useFetch(endpoint, options = null) {
+export function useFetch(endpoint, options = null,interupt = false) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-
+    if(interupt) return {data, error,refetchData : () => {}, isLoading};
     const handleFetch = async () => {
         setIsLoading(true);
         setError(null);
@@ -17,8 +17,11 @@ export function useFetch(endpoint, options = null) {
             setIsLoading(false);
         }
     }
+    function refetchData() {
+        handleFetch();
+    }
     useEffect(() => {
         handleFetch();
     }, [endpoint]);
-    return {data, error, isLoading};
+    return {data, error,refetchData, isLoading};
 }

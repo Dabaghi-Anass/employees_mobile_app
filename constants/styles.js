@@ -2,6 +2,14 @@ import { Dimensions, StyleSheet } from 'react-native';
 import colors from './colors';
 let deviceWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
+    modalButtonsContainer : {
+        flexDirection : 'row',
+        paddingTop  : 20,
+        alignItems : 'center' ,
+        justifyContent : 'center' ,
+        gap : 20 ,
+        width : "100%"
+    },
     searchContainer : {
         flexDirection : 'row',
         justifyContent : 'space-between',
@@ -42,6 +50,8 @@ const styles = StyleSheet.create({
     }
     ,employeeCardName : {
         fontSize : 22,
+        direction : 'ltr',
+        textAlign : 'left',
         marginBottom : 5,
         fontWeight : 'bold',
         color : colors.TEXT_100
@@ -106,9 +116,36 @@ const styles = StyleSheet.create({
     },
     editButton : {
         position : 'absolute',
-        bottom : 40,
+        top : 0,
+        left: 120,
+        zIndex : 100,
+        padding : 10,
+        aspectRatio : 1,
+        width : 60,
+        alignItems : 'center',
+        justifyContent : 'center',
+        borderRadius : 100,
     },
     saveButton : {
+    },
+    createEmployeeButton : {
+        width : 40,
+        aspectRatio : 1,
+        display : 'flex',
+        justifyContent : 'center',
+        alignItems : 'center',
+    },
+    deleteButton : {
+        backgroundColor : colors.RED,
+        marginTop : 100
+    },
+    cancelButton : {
+        backgroundColor : colors.BG_400,
+        width : '50%'
+    },
+    confirmButton : {
+        backgroundColor : colors.RED,
+        width : '50%'
     }
 });
 

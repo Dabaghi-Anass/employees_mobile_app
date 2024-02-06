@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { getEmployeesByCityEndpoint } from '../api/endpoints';
@@ -10,7 +10,10 @@ import Error from './Error';
 
 const NearbyEmployees = () => {
     const selectedCity = useSelector(state => state.city.value);
-    const {data : employees , isLoading,error} = useFetch(getEmployeesByCityEndpoint(selectedCity?.name))
+    const {data : employees ,refetchData, isLoading,error} = useFetch(getEmployeesByCityEndpoint(selectedCity?.name))
+    useEffect(()=>{
+        refetchData()
+    } , [])
     return (
         <View style={{maxHeight : 250 }}>
             <Text style={globalStyles.header}>{selectedCity?.name?? "Nearby"} Employees</Text>
