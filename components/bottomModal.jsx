@@ -38,12 +38,8 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         alignItems: 'center',
-        width : Dimensions.get('window').width - 50,
-    },
-    closeButtonContainer: {
-        position: 'absolute',
-        top: -20,
-        right: -10,
+        width : Dimensions.get('window').width,
+        height : Dimensions.get("window").height / 3,
     },
     title : {
         fontSize : 24,

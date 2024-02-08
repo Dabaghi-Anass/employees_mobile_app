@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createEmployeeEndpoint, deleteEmployeeByIdEndPoint, putEmployeeByIdEndpoint } from "./endpoints";
+import { createEmployeeEndpoint, deleteEmployeeByIdEndPoint, getMediaUploadEndPoint, putEmployeeByIdEndpoint } from "./endpoints";
 
 async function saveEmployee(employee){
     let response;
@@ -16,6 +16,26 @@ async function saveEmployee(employee){
 async function deleteEmployee(id){
     await axios.delete(deleteEmployeeByIdEndPoint(id));
 }
+async function uploadToServer(uri){
+    try {
+        const formData = new FormData();
+        formData.append('file', {
+            uri,
+            name: 'photo.jpg',
+            type: 'image/jpeg',
+        });
+        const endpoint = getMediaUploadEndPoint()
+        const response = await axios.post(endpoint, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error.message)
+        return null;
+    }
+}
 
-const api = { saveEmployee, deleteEmployee };
+const api = { saveEmployee, deleteEmployee , uploadToServer };
 export default api;

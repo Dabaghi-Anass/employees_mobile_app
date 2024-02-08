@@ -1,3 +1,4 @@
+import { manipulateAsync } from 'expo-image-manipulator';
 import { router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Dimensions, ToastAndroid, View } from 'react-native';
@@ -33,6 +34,19 @@ const EmployeeSavePage = () => {
         setEmployee(data)
         if(interupt) setEmployee(defaultEmployee)
     } ,[data])
+    async function handleImageTaken(uri){
+        try {
+            const compressedImage = await manipulateAsync(
+                uri,
+                [{ resize: { width: 500 } }],
+                { compress: 0.5, format: 'jpeg' }
+            );
+            const imageLink = await api.uploadToServer(compressedImage.uri)
+            setEmployee({...employee , imageUrl : imageLink})
+        } catch (error) {
+            console.error('Error compressing image:', error);
+        }
+    }
     if(!employee || isLoading) return <Screen styles={{alignItems : 'center',justifyContent : 'center'}}><ActivityIndicator size={60} color={colors.GREEN_LIGHT} /></Screen>
     return (
         <Screen>
@@ -40,7 +54,7 @@ const EmployeeSavePage = () => {
             <View  style={styles.employeeCardContent}>
                 <ImageSelector
                     imageUrl={employee.imageUrl}
-                    onImageTaken={(uri) => setEmployee({...employee , imageUrl : uri})}
+                    onImageTaken={handleImageTaken}
                 />
                 <AppInput
                     iconName='person'
