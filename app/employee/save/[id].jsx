@@ -43,9 +43,17 @@ const EmployeeSavePage = () => {
             );
             const imageLink = await api.uploadToServer(compressedImage.uri)
             setEmployee({...employee , imageUrl : imageLink})
+            if(!interupt){
+                const savedEmployee = await api.saveEmployee({id : employee.id , imageUrl : imageLink});
+                ToastAndroid.show(`updated image for (${savedEmployee.name})`, ToastAndroid.CENTER);
+            }
+
         } catch (error) {
-            console.error('Error compressing image:', error);
+            ToastAndroid.show(error.message, ToastAndroid.CENTER);
         }
+    }
+    function objectEquals(obj1 , obj2){
+        return JSON.stringify(obj1) === JSON.stringify(obj2)
     }
     if(!employee || isLoading) return <Screen styles={{alignItems : 'center',justifyContent : 'center'}}><ActivityIndicator size={60} color={colors.GREEN_LIGHT} /></Screen>
     return (
@@ -92,10 +100,12 @@ const EmployeeSavePage = () => {
                     value={employee.bio?.toString()}
                     onChangeText={(text) => handleChange(text , "bio")}
                 />
-                <AsyncButton
-                    styles={{button : {...styles.saveButton,marginVertical : 30 , width : deviceWidth / 1.5}}}
-                    text="Submit"  onPress={handleSaveEmployee}
-                />
+                {!objectEquals({...employee , imageUrl : null} , {...data,imageUrl : null}) &&
+                    <AsyncButton
+                        styles={{button : {...styles.saveButton,marginVertical : 30 , width : deviceWidth / 1.5}}}
+                        text="Submit"  onPress={handleSaveEmployee}
+                    />
+                }
             </View>
         </Screen>
     )
