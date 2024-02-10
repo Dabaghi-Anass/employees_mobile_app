@@ -1,4 +1,5 @@
 const BASE_URL = "https://employees-api-92f4.onrender.com"
+// const BASE_URL = "http://192.168.1.111:9000"
 const API_DOMAIN = `${BASE_URL}/api/employees`;
 const MEDIA_DOMAIN = `${BASE_URL}/media`;
 export const getEmployeesEndpoint = (offset , limit) =>`${API_DOMAIN}?offset=${offset}&limit=${limit}`;

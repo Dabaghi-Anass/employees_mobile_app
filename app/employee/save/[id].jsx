@@ -23,9 +23,35 @@ const EmployeeSavePage = () => {
     const handleChange = (text , field) => {
         setEmployee({...employee , [field] : +text || text})
     }
+    const notEmpty = (...args) => args.every(arg => !!arg)
+    const validate = (employee) =>{
+        if(!employee) return
+        try{
+            if(employee.age && isNaN(employee.age)) throw new Error("age must be a number")
+            if(employee.phone && isNaN(employee.phone)) throw new Error("phone must be a number")
+            return notEmpty(employee.name,employee.age,employee.email,employee.phone,employee.city,employee.bio)
+        }catch(error){
+            ToastAndroid.show(error.message, ToastAndroid.CENTER);
+            return false
+        }
+    }
+    const trimify = (employee) => {
+        return Object.keys(employee).reduce((acc , key) => {
+            acc[key] = typeof employee[key] === "string" ? employee[key].trim() : employee[key]
+            return acc
+        },{})
+    }
     const handleSaveEmployee = async () => {
-        const savedEmployee = await api.saveEmployee(employee)
-        ToastAndroid.show(`employee (${savedEmployee.name}) saved`, ToastAndroid.CENTER);
+        try {
+            if(!validate(employee)) {
+                ToastAndroid.show("please fill all fields", ToastAndroid.CENTER);
+                return;
+            }
+            const savedEmployee = await api.saveEmployee(trimify(employee),interupt)
+            ToastAndroid.show(`employee (${savedEmployee.name}) saved`, ToastAndroid.CENTER);
+        } catch (error) {
+            ToastAndroid.show(`unexpected error occured`, ToastAndroid.CENTER);
+        }
         setTimeout(() => {
             router.replace("/")
         } , 1000)

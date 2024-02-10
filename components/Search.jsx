@@ -21,15 +21,17 @@ const Search = ({query}) => {
                 placeholderTextColor={colors.TEXT_200}
                 value={searchQuery}
                 onChangeText={setSearchQuery}
+                onEndEditing={handleSearch}
             />
             <AppButton
                 onPress={handleSearch}
+                
                 styles={{
                     button : {
                         width : buttonSize,
                         height : buttonSize,
                     },
-                }} icon={<Ionicons name="search" size={buttonSize - buttonPadding * 2} />}
+                }} icon={<Ionicons name="search" size={buttonSize - buttonPadding * 2} color={colors.WHITE} />}
             />
         </View>
     )

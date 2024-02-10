@@ -11,6 +11,6 @@ export const getUserCity = async () => {
         longitude: location.coords.longitude,
     });
     if (geocode.length > 0) {
-        return geocode[0].city;
+        return geocode[0]?.city?.toLowerCase()?.trim();
     }
 }

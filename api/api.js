@@ -1,17 +1,19 @@
 import axios from "axios";
 import { createEmployeeEndpoint, deleteEmployeeByIdEndPoint, getMediaUploadEndPoint, putEmployeeByIdEndpoint } from "./endpoints";
 
-async function saveEmployee(employee){
+async function saveEmployee(employee , newEmployee){
     let response;
-    if(employee.id){
+    if(!newEmployee){
         const endPoint = putEmployeeByIdEndpoint(employee.id);
         response = await axios.put(endPoint, employee);
     }
     else {
         const endPoint = createEmployeeEndpoint();
+        delete employee.id;
         response = await axios.post(endPoint, employee);
     }
-    return response.data;
+    let data = await response.data;
+    return data;
 }
 async function deleteEmployee(id){
     await axios.delete(deleteEmployeeByIdEndPoint(id));

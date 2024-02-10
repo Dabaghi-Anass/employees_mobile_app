@@ -1,5 +1,5 @@
-const GREEN_DARK = '#4e5ef2';
-const GREEN_LIGHT = '#4e69f2';
+const GREEN_DARK = '#4382f7';
+const GREEN_LIGHT = '#3474eb';
 const APP_BG = '#171717';
 const BG_200 = '#1E1E1E';
 const BG_300 = '#2F2F2F';

@@ -10,7 +10,7 @@ import Error from './Error';
 
 const NearbyEmployees = () => {
     const selectedCity = useSelector(state => state.city.value);
-    const {data : employees ,refetchData, isLoading,error} = useFetch(getEmployeesByCityEndpoint(selectedCity?.name))
+    const {data : employees ,refetchData, isLoading,error} = useFetch(getEmployeesByCityEndpoint(selectedCity?.name?.trim()), {method : 'GET'})
     useEffect(()=>{
         refetchData()
     } , [])

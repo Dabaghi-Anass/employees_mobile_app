@@ -38,7 +38,7 @@ const SearchResults = () => {
                             width : buttonSize,
                             height : buttonSize,
                         },
-                    }} icon={<Ionicons name="search" size={buttonSize - buttonPadding * 2} />}
+                    }} icon={<Ionicons name="search" size={buttonSize - buttonPadding * 2} color={colors.WHITE} />}
                 />
             </View>
             {error && <Error message={error.message} />}

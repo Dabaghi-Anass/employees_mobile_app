@@ -17,7 +17,7 @@ export default function App() {
     const [employees , setEmployees] = useState([]);
     const [page , setPage] = useState(0)
     const endPoint = getEmployeesEndpoint(page,5); //5 is limit
-    const {data , isLoading , error} = useFetch(endPoint , options)
+    const {data , isLoading , error , refetchData} = useFetch(endPoint , options)
     const unique = (data , key) =>{
         return [...new Map(data.map(item => [item[key], item])).values()]
     }
@@ -52,6 +52,7 @@ export default function App() {
                             onRefresh={() =>{
                                 setEmployees([])
                                 setPage(0)
+                                if(!data?.hasNext && page === 0) refetchData()
                             }}
                         />
                     }

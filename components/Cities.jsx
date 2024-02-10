@@ -19,12 +19,13 @@ const Cities = () => {
         .replace(/[^\x00-\x7F]/g, "");
     }
     const recommandNearEmployees = (userCity) => {
+        if(!userCity) return
         const city = sanitizeString(userCity.toLowerCase())
         if(cities === null) return
         let citiesArray = [...cities]
-        citiesArray = citiesArray.map(({name , id}) => ({name : name.toLowerCase() , id}))
-        if(citiesArray.find(c => c.name === city)){
-            dispatch(setCity(citiesArray?.find(c => c.name === city)))
+        citiesArray = citiesArray?.map(({name , id}) => ({name : name?.toLowerCase() , id}))
+        if(citiesArray?.find(c => c.name?.trim().toLowerCase() === city.trim().toLowerCase())){
+            dispatch(setCity(citiesArray?.find(c => c.name.trim().toLowerCase() === city.trim().toLowerCase())))
         }
     }
     useEffect(()=>{
