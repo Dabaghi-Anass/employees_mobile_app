@@ -26,7 +26,7 @@
       "package": "com.anass.employees_app"
     },
     "web": {
-      "favicon": "./assets/icon.webp",
+      "favicon": "./assets/icon.png",
       "bundler": "metro"
     },
     "plugins": [
