@@ -1,7 +1,7 @@
 import { manipulateAsync } from 'expo-image-manipulator';
 import { router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Dimensions, ToastAndroid, View } from 'react-native';
+import { ActivityIndicator, Dimensions, ScrollView, ToastAndroid, View } from 'react-native';
 import api from '../../../api/api';
 import { getEmployeeByIdEndpoint } from '../../../api/endpoints';
 import AsyncButton from '../../../components/AsyncButton';
@@ -84,6 +84,7 @@ const EmployeeSavePage = () => {
     if(!employee || isLoading) return <Screen styles={{alignItems : 'center',justifyContent : 'center'}}><ActivityIndicator size={60} color={colors.GREEN_LIGHT} /></Screen>
     return (
         <Screen>
+            <ScrollView style={{gap : 10, display : 'flex',flex :1 , padding : 10 , width:'100%'}}>
             {error && <Error message={error} />}
             <View  style={styles.employeeCardContent}>
                 <ImageSelector
@@ -133,6 +134,7 @@ const EmployeeSavePage = () => {
                     />
                 }
             </View>
+        </ScrollView>
         </Screen>
     )
 }
